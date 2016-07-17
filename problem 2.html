@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Problem 2</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.js"></script>
+  </head>
+  <body>
+    <hello></hello>
+  <script>
+    var appModule = angular.module('app', []);
+    appModule.controller('myctrl', function($scope) {
+   $scope.hj=function()
+   {
+   	alert("custom directive");
+   }
+        
+});
+    appModule.directive('custComment', function() {
+      return {
+        restrict: 'M',
+     template:'<div><button type="button" onclick="pop()">comment</button></div>'
+        
+      };
+    });
+    appModule.directive('custElement', function() {
+      return {
+        restrict: 'E',
+     template:'<div><button type="button" onclick="hj()">Element</button></div>'
+        
+      };
+    });
+    appModule.directive('custAttr', function() {
+      return {
+        restrict: 'A',
+     template:'<div><button type="button" onclick="pop()">Attribute</button></div>'
+        
+      };
+    });
+    
+  </script>
+  <div ng-app='app' ng-controller="myctrl">
+  <input type="text" ng-model="name1"/>
+  //cust-Comment
+  <cust-Element></cust-Element>
+  <div custAttr></div>
+  </div>
+  </body>
+</html>

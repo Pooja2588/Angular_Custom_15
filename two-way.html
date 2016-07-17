@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Problem 2</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.js"></script>
+  </head>
+  <body>
+    <hello></hello>
+  <script>
+    var appModule = angular.module('app', []);
+    appModule.controller('myctrl', function($scope) {
+   $scope.customer={
+   	name:"pooja",
+   	age:"27"
+   }
+        
+});
+    appModule.directive('custBind', function() {
+      return {
+        restrict: 'EA',
+        scope:{
+        	role:"=name"
+        },
+     template: 'From Directive : Name:<input type="text" ng-model="role"><br>Age<input type="text" ng-model="role">'
+        
+      };
+    });
+   
+    
+    
+  </script>
+  <div ng-app='app' ng-controller="myctrl">
+  Name:<input type="text" ng-model="customer.name"/>
+  <br>
+  Age: <input type="text" ng-model="customer.age"/>
+ 
+  <div cust-bind name="customer.name"></div>
+  </div>
+  </body>
+</html>
